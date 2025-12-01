@@ -5,40 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Les Péchés des Yeux - Fiche 8</title>
     
-    <!-- On utilise Tailwind via CDN pour que le design fonctionne tout de suite sans installation -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Configuration des polices -->
+    <!-- Google Fonts -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
         
         body { font-family: 'Inter', sans-serif; background-color: #f9fafb; }
         .font-amiri { font-family: 'Amiri', serif; }
         
-        /* Animations douces */
+        /* Animations */
         .fade-in { animation: fadeIn 0.4s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
         .slide-up { animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Masquer la scrollbar pour un look clean */
+        /* Clean Scrollbar */
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 10px; }
 
-        /* Effet 3D pour la carte */
+        /* 3D Flip */
         .perspective-1000 { perspective: 1000px; }
         .transform-style-3d { transform-style: preserve-3d; }
         .backface-hidden { backface-visibility: hidden; }
         .rotate-y-180 { transform: rotateY(180deg); }
+
+        /* Styles spécifiques au Mannequin */
+        .body-part { transition: fill 0.3s ease; stroke: white; stroke-width: 2px; }
+        .veil-part { transition: opacity 0.3s ease; fill: #64748b; }
     </style>
 </head>
 <body class="text-gray-800 h-screen flex flex-col max-w-md mx-auto shadow-2xl overflow-hidden relative bg-gray-50">
 
-    <!-- HEADER FIXE -->
+    <!-- HEADER -->
     <header class="bg-white px-5 py-4 flex items-center gap-3 border-b border-gray-100 sticky top-0 z-10">
         <div class="bg-emerald-600 p-2 rounded-lg text-white">
-            <!-- Icone Eye -->
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
         </div>
         <div>
@@ -47,48 +50,37 @@
         </div>
     </header>
 
-    <!-- CONTENU PRINCIPAL -->
-    <main class="flex-1 overflow-y-auto p-4 space-y-6 pb-28" id="main-content">
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 overflow-y-auto p-4 space-y-6 pb-32" id="main-content">
         
-        <!-- ONGLET 1: DEFINITIONS -->
+        <!-- ONGLET 1: DEFINITIONS (Code inchangé) -->
         <div id="tab-definitions" class="space-y-6 fade-in">
-            
-            <!-- Carte Définition Complète -->
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                <!-- En-tête Dégradé -->
+             <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
                 <div class="bg-gradient-to-r from-[#8B5E3C] to-[#A67C52] p-3 text-center">
                     <h2 class="text-white font-bold tracking-widest uppercase text-sm shadow-sm">DÉFINITION DE REGARDER L'INTERDIT</h2>
                 </div>
-
                 <div class="p-5">
                     <p class="text-gray-700 text-center text-sm leading-relaxed mb-4">
                         Il s'agit de regarder avec attention les parties du corps d'autrui qu'Allah a interdit de dévoiler. On appelle ces parties du corps « awrah ».
                     </p>
-
-                    <!-- Texte Arabe -->
                     <div class="text-center mb-6">
                         <p class="font-amiri text-lg text-gray-800 leading-loose" dir="rtl">
                             هُوَ التَّأْمُلُ بِالنَّظَرِ فِي الْعَوْرَاتِ وَهِيَ مَا يَحْرُمُ كَشْفُهُ مِنَ الْجِسْمِ سَوَاءٌ مِنَ الرَّجُلِ أَوِ الْمَرْأَةِ
                         </p>
                     </div>
-
-                    <!-- Bloc Condition (Beige) -->
                     <div class="bg-[#FDF6E3] rounded-xl border border-[#E8DCC2] overflow-hidden">
                         <div class="bg-[#EFE5D1] py-2 px-3 text-center border-b border-[#E8DCC2]">
                             <h3 class="text-[#8B5E3C] font-bold text-[10px] sm:text-xs uppercase tracking-wide">
                                 CELA N'EST INTERDIT QUE SI ON A L'INTENTION DE REGARDER LA 'AWRAH
                             </h3>
                         </div>
-                        
                         <div class="p-4 text-center">
                             <p class="text-xs text-gray-600 mb-3 italic">
                                 Dans les Sunan de 'Abi Dāwūd, d'après 'Ali ibn 'Abi Tālib, le Prophète ﷺ dit :
                             </p>
-                            
                             <p class="font-amiri text-lg text-gray-800 mb-2 leading-loose" dir="rtl">
                                 يَا عَلِيُّ، لا تُتْبِعِ النَّظْرَةَ النَّظْرَةَ ، فَإِنَّ لَكَ الْأُولَى وَلَيْسَتْ لَكَ الْآخِرَةُ
                             </p>
-
                             <p class="text-gray-800 font-medium text-sm italic relative px-2 mt-2">
                                 <span class="text-[#A67C52] text-2xl absolute -top-2 left-0 opacity-50">“</span>
                                 Ô Ali, ne fais pas suivre le premier regard par le suivant, car tu as droit au premier, mais pas au second.
@@ -96,240 +88,168 @@
                             </p>
                         </div>
                     </div>
-
-                    <div class="mt-6 pt-4 border-t border-gray-100 text-xs text-gray-500 text-center">
-                        <span class="font-bold block text-gray-400 uppercase text-[10px] mb-1">Note (Al-Akhdari)</span>
-                        « Il lui est obligatoire de préserver ses yeux de regarder l'interdit... »
-                    </div>
-                </div>
-            </div>
-
-            <!-- Carte Preuves (Vert Foncé) -->
-            <div class="bg-emerald-900 rounded-2xl p-6 shadow-md text-white">
-                <div class="flex items-center gap-2 mb-6">
-                    <svg class="text-emerald-300" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-                    <h2 class="text-xl font-serif font-bold text-white">Preuves de l'Interdiction</h2>
-                </div>
-                
-                <div class="grid gap-6">
-                    <!-- Hommes -->
-                    <div class="bg-emerald-800/50 rounded-xl p-4 border border-emerald-700/50">
-                        <h3 class="text-emerald-200 font-bold text-sm mb-3 uppercase tracking-wider">Pour les Hommes (S. An-Nur, v.30)</h3>
-                        <p class="text-right font-amiri text-xl leading-loose mb-3" dir="rtl">
-                            قُل لِّلْمُؤْمِنِينَ يَغُضُّوا مِنْ أَبْصَارِهِمْ وَيَحْفَظُوا فُرُوجَهُمْ
-                        </p>
-                        <p class="text-emerald-100 text-sm italic leading-relaxed">
-                            « Dis aux croyants de baisser leurs regards et de préserver leurs parties intimes ; ceci est plus pur pour eux. »
-                        </p>
-                    </div>
-
-                    <!-- Femmes -->
-                    <div class="bg-emerald-800/50 rounded-xl p-4 border border-emerald-700/50">
-                        <h3 class="text-emerald-200 font-bold text-sm mb-3 uppercase tracking-wider">Pour les Femmes (S. An-Nur, v.31)</h3>
-                        <p class="text-right font-amiri text-xl leading-loose mb-3" dir="rtl">
-                            وَقُل لِّلْمُؤْمِنَاتِ يَغْضُضْنَ مِنْ أَبْصَارِهِنَّ وَيَحْفَظْنَ فُرُوجَهُنَّ
-                        </p>
-                        <p class="text-emerald-100 text-sm italic leading-relaxed">
-                            « Dis aux croyantes de baisser leur regard et de préserver leurs parties intimes. »
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Carte Mahram/Ajnabi -->
-            <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
-                <h2 class="text-lg font-bold text-gray-800 mb-4">Les Catégories de Personnes</h2>
-                <div class="space-y-4">
-                    <!-- Mahram -->
-                    <div class="p-4 bg-blue-50 rounded-xl border border-blue-100">
-                        <div class="flex items-center gap-3 mb-2">
-                            <div class="bg-blue-100 text-blue-600 rounded-full p-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                            </div>
-                            <span class="font-bold text-blue-900 text-lg">Le Mahram</span>
-                        </div>
-                        <p class="text-sm text-blue-800 leading-relaxed pl-1">
-                            Personne avec qui le mariage est <strong>interdit à vie</strong> (Père, frère, oncle, fils...).
-                        </p>
-                    </div>
-
-                    <!-- Ajnabi -->
-                    <div class="p-4 bg-purple-50 rounded-xl border border-purple-100">
-                        <div class="flex items-center gap-3 mb-2">
-                            <div class="bg-purple-100 text-purple-600 rounded-full p-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                            </div>
-                            <span class="font-bold text-purple-900 text-lg">L'Ajnabi (Étranger)</span>
-                        </div>
-                        <p class="text-sm text-purple-800 leading-relaxed pl-1">
-                            Toute personne avec qui le mariage est <strong>possible</strong> (Cousin(e), voisin(e), inconnu(e)).
-                        </p>
-                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- ONGLET 2: SIMULATEUR -->
-        <div id="tab-simulateur" class="hidden fade-in space-y-4">
+        <!-- ONGLET 2: SIMULATEUR (CORRIGÉ) -->
+        <div id="tab-simulateur" class="hidden fade-in space-y-6">
+            
+            <!-- 1. JE SUIS -->
             <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
-                <h2 class="text-lg font-bold text-gray-800 mb-1">Simulateur Awrah</h2>
-                <p class="text-gray-500 text-xs mb-6">Configurez la situation pour voir les règles.</p>
+                <h3 class="flex items-center gap-2 text-emerald-800 font-bold mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    1. Je suis :
+                </h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <!-- Bouton Homme -->
+                    <button onclick="setSubject('homme')" id="btn-sub-homme" class="relative group p-4 rounded-xl border-2 transition-all duration-200 bg-emerald-50 border-emerald-500 text-emerald-800 shadow-sm">
+                        <div class="mb-2 mx-auto w-12 h-12 flex items-center justify-center">
+                           <span class="text-3xl">👨</span>
+                        </div>
+                        <span class="font-bold text-sm">Homme</span>
+                        <div class="absolute top-2 right-2 w-3 h-3 bg-emerald-500 rounded-full"></div>
+                    </button>
 
-                <div class="space-y-5">
-                    <!-- Je Suis -->
-                    <div>
-                        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 block">Je suis</span>
-                        <div class="flex gap-2">
-                            <button onclick="updateSim('subject', 'homme')" id="btn-sub-homme" class="sim-btn flex-1 py-2 px-3 text-sm rounded-lg border font-medium bg-emerald-600 text-white border-emerald-600">Un Homme</button>
-                            <button onclick="updateSim('subject', 'femme')" id="btn-sub-femme" class="sim-btn flex-1 py-2 px-3 text-sm rounded-lg border font-medium bg-white text-gray-500 border-gray-200">Une Femme</button>
+                    <!-- Bouton Femme -->
+                    <button onclick="setSubject('femme')" id="btn-sub-femme" class="relative group p-4 rounded-xl border-2 transition-all duration-200 bg-white border-gray-100 text-gray-500 hover:border-gray-200">
+                        <div class="mb-2 mx-auto w-12 h-12 flex items-center justify-center">
+                            <!-- Icone Femme Voilée Gris -->
+                            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#E2E8F0"/>
+                                <path d="M12 6C13.6569 6 15 7.34315 15 9V11C15 12.6569 13.6569 14 12 14C10.3431 14 9 12.6569 9 11V9C9 7.34315 10.3431 6 12 6Z" fill="#F87171"/>
+                                <path d="M12 6C9 6 7 8.5 7 11V13C7 16 9.5 17 12 17C14.5 17 17 16 17 13V11C17 8.5 15 6 12 6Z" stroke="#64748B" stroke-width="2"/>
+                                <path d="M12 14C9 14 6 16 6 18.5V21H18V18.5C18 16 15 14 12 14Z" fill="#64748B"/>
+                            </svg>
                         </div>
-                    </div>
-                    <!-- Je Regarde -->
-                    <div>
-                        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 block">Je regarde</span>
-                        <div class="flex gap-2">
-                            <button onclick="updateSim('target', 'homme')" id="btn-tar-homme" class="sim-btn flex-1 py-2 px-3 text-sm rounded-lg border font-medium bg-emerald-600 text-white border-emerald-600">Un Homme</button>
-                            <button onclick="updateSim('target', 'femme')" id="btn-tar-femme" class="sim-btn flex-1 py-2 px-3 text-sm rounded-lg border font-medium bg-white text-gray-500 border-gray-200">Une Femme</button>
-                        </div>
-                    </div>
-                    <!-- Relation -->
-                    <div>
-                        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 block">Relation</span>
-                        <div class="flex gap-2">
-                            <button onclick="updateSim('relation', 'ajnabi')" id="btn-rel-ajnabi" class="sim-btn flex-1 py-2 px-3 text-sm rounded-lg border font-medium bg-emerald-600 text-white border-emerald-600">Inconnu(e)</button>
-                            <button onclick="updateSim('relation', 'mahram')" id="btn-rel-mahram" class="sim-btn flex-1 py-2 px-3 text-sm rounded-lg border font-medium bg-white text-gray-500 border-gray-200">Mahram</button>
-                        </div>
-                    </div>
+                        <span class="font-bold text-sm">Femme</span>
+                        <div id="dot-femme" class="absolute top-2 right-2 w-3 h-3 bg-gray-200 rounded-full"></div>
+                    </button>
                 </div>
             </div>
 
-            <!-- Résultat -->
-            <div id="sim-result-box" class="p-5 rounded-2xl border bg-emerald-50 text-emerald-800 border-emerald-200 shadow-sm flex items-start gap-3">
-                <div class="mt-1" id="sim-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                </div>
-                <div>
-                    <h3 class="font-bold mb-1">Verdict :</h3>
-                    <p class="text-sm leading-relaxed" id="sim-text">Entre hommes : La 'Awrah est située entre le nombril et les genoux.</p>
+            <!-- 2. QUI EST EN FACE -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
+                <h3 class="flex items-center gap-2 text-emerald-800 font-bold mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    2. Qui est en face ?
+                </h3>
+                
+                <div class="space-y-3">
+                    <button onclick="setRelation('ajnabi')" id="btn-rel-ajnabi" class="w-full text-left p-4 rounded-xl border-2 transition-all bg-emerald-600 border-emerald-600 text-white shadow-md flex justify-between items-center">
+                        <span class="font-bold">Ajnabi (Étranger)</span>
+                        <div class="w-4 h-4 bg-white rounded-full border-4 border-emerald-600"></div>
+                    </button>
+                    
+                    <button onclick="setRelation('mahram')" id="btn-rel-mahram" class="w-full text-left p-4 rounded-xl border-2 transition-all bg-white border-gray-100 text-gray-500 hover:bg-gray-50 flex justify-between items-center">
+                        <span class="font-bold">Mahram (Famille proche)</span>
+                        <div class="w-4 h-4 bg-gray-200 rounded-full"></div>
+                    </button>
+                    
+                    <button onclick="setRelation('epoux')" id="btn-rel-epoux" class="w-full text-left p-4 rounded-xl border-2 transition-all bg-white border-gray-100 text-gray-500 hover:bg-gray-50 flex justify-between items-center">
+                        <span class="font-bold">Époux / Épouse</span>
+                        <div class="w-4 h-4 bg-gray-200 rounded-full"></div>
+                    </button>
                 </div>
             </div>
 
-            <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
-               <p class="text-xs text-blue-800 text-center">
-                   <span class="font-bold">Astuce :</span> Les cousins/cousines ne sont PAS des Mahrams.
-               </p>
+            <!-- 3. OPTION (Femme uniquement) -->
+            <div id="option-femme" class="hidden bg-white p-4 rounded-xl border border-gray-100 animate-slide-up">
+                <label class="flex items-center gap-3 cursor-pointer">
+                    <input type="checkbox" id="check-visage" onchange="updateMannequin()" class="w-5 h-5 text-emerald-600 rounded focus:ring-emerald-500 border-gray-300">
+                    <span class="text-sm font-medium text-gray-700">Cacher le visage (Avis plus strict / Niqab)</span>
+                </label>
             </div>
+
+            <!-- LEGENDE -->
+            <div class="flex flex-wrap justify-center gap-3 text-xs font-bold">
+                <div class="flex items-center gap-2 bg-emerald-50 px-3 py-1 rounded-full text-emerald-800 border border-emerald-100">
+                    <div class="w-3 h-3 bg-[#34d399] rounded"></div> Autorisé
+                </div>
+                <div class="flex items-center gap-2 bg-red-50 px-3 py-1 rounded-full text-red-800 border border-red-100">
+                    <div class="w-3 h-3 bg-[#f87171] rounded"></div> 'Awrah (Interdit)
+                </div>
+                <div id="legend-voile" class="hidden flex items-center gap-2 bg-gray-100 px-3 py-1 rounded-full text-gray-700 border border-gray-200">
+                    <div class="w-3 h-3 bg-[#64748b] rounded"></div> Voile
+                </div>
+            </div>
+
+            <!-- MANNEQUIN -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center">
+                <span class="text-xs font-bold text-gray-400 mb-4 bg-gray-100 px-2 py-1 rounded">Vue de face</span>
+                
+                <!-- SVG MANNEQUIN MISE A JOUR -->
+                <svg width="200" height="360" viewBox="0 0 200 360" class="drop-shadow-xl">
+                    <!-- Voile (Behind head) -->
+                    <path id="man-veil" d="M70 40 C70 10 130 10 130 40 V 80 H 70 V 40 Z" class="veil-part opacity-0" />
+                    <path id="man-veil-shoulders" d="M60 80 Q 50 100 30 110 V 80 H 60 Z M140 80 Q 150 100 170 110 V 80 H 140 Z" class="veil-part opacity-0" />
+
+                    <!-- Cou -->
+                    <rect id="man-neck" x="90" y="65" width="20" height="15" class="body-part" fill="#34d399" />
+                    
+                    <!-- Tête -->
+                    <circle id="man-head" cx="100" cy="45" r="28" class="body-part" fill="#34d399" />
+                    
+                    <!-- Bras Gauche -->
+                    <rect id="man-arm-l" x="30" y="80" width="30" height="100" rx="5" class="body-part" fill="#f87171" />
+                    <!-- Bras Droit -->
+                    <rect id="man-arm-r" x="140" y="80" width="30" height="100" rx="5" class="body-part" fill="#f87171" />
+                    
+                    <!-- Mains -->
+                    <circle id="man-hand-l" cx="45" cy="195" r="12" class="body-part" fill="#34d399" />
+                    <circle id="man-hand-r" cx="155" cy="195" r="12" class="body-part" fill="#34d399" />
+
+                    <!-- Torse (Haut) -->
+                    <rect id="man-torso" x="65" y="80" width="70" height="80" class="body-part" fill="#f87171" />
+                    
+                    <!-- Zone Nombril-Genoux (La Awrah majeure) -->
+                    <rect id="man-awrah-zone" x="65" y="160" width="70" height="90" class="body-part" fill="#f87171" />
+
+                    <!-- Jambes (Bas) -->
+                    <rect id="man-leg-l" x="70" y="255" width="25" height="80" class="body-part" fill="#f87171" />
+                    <rect id="man-leg-r" x="105" y="255" width="25" height="80" class="body-part" fill="#f87171" />
+
+                    <!-- Pieds -->
+                    <rect id="man-foot-l" x="65" y="335" width="35" height="10" rx="2" class="body-part" fill="#34d399" />
+                    <rect id="man-foot-r" x="100" y="335" width="35" height="10" rx="2" class="body-part" fill="#34d399" />
+                </svg>
+            </div>
+
+            <!-- RESULTAT TEXTE -->
+            <div id="result-box" class="bg-emerald-50 border border-emerald-200 rounded-xl p-4 transition-all">
+                <h4 class="font-bold text-emerald-800 text-sm mb-2 uppercase">Règle applicable :</h4>
+                <p id="result-text" class="text-emerald-900 font-medium leading-relaxed">
+                    Sélectionnez une situation pour voir le résultat.
+                </p>
+                <div id="result-source" class="mt-3 text-xs text-emerald-600 italic border-t border-emerald-200 pt-2">
+                    Source : Fiche N°8
+                </div>
+            </div>
+
         </div>
 
-        <!-- ONGLET 3: MAUVAIS OEIL -->
+        <!-- ONGLETS 3 & 4 (Inchangés pour l'instant) -->
         <div id="tab-mauvais-oeil" class="hidden fade-in space-y-4">
-            <!-- Accueil Mauvais Oeil -->
-            <div id="mo-step-0" class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center space-y-6">
+             <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center space-y-6">
                 <div class="w-20 h-20 bg-indigo-50 rounded-full flex items-center justify-center mx-auto text-4xl">🧿</div>
-                <div>
-                    <h2 class="text-xl font-bold text-gray-800">Le Mauvais Œil (Al-Ayn)</h2>
-                    <p class="text-gray-500 text-sm mt-2">Un regard admiratif qui peut nuire s'il n'est pas béni.</p>
-                </div>
-                <div class="grid gap-3">
-                    <button onclick="showMoStep(1)" class="w-full bg-emerald-600 text-white py-3 rounded-xl font-medium shadow-lg shadow-emerald-200">Comment se protéger ?</button>
-                    <button onclick="showMoStep(2)" class="w-full bg-white border border-gray-200 text-gray-700 py-3 rounded-xl font-medium">Le Remède (Lavage)</button>
-                </div>
-            </div>
-
-            <!-- Protection -->
-            <div id="mo-step-1" class="hidden bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center relative">
-                <button onclick="showMoStep(0)" class="absolute top-4 left-4 text-gray-400 font-bold text-xl">&larr;</button>
-                <h3 class="font-bold text-lg mb-4">La Règle d'Or</h3>
-                <p class="text-gray-600 mb-6">Dès que quelque chose te plaît chez autrui, tu DOIS invoquer la bénédiction.</p>
-                <div class="bg-yellow-50 border border-yellow-200 p-4 rounded-xl mb-6">
-                    <p class="font-amiri text-2xl text-yellow-800 mb-2">اللَّهُمَّ بَارِكْ فِيهِ</p>
-                    <p class="font-bold text-yellow-900">"Allahumma Barik Fih"</p>
-                    <p class="text-xs text-yellow-700 mt-1">(Ô Allah, bénis-le)</p>
-                </div>
-            </div>
-
-            <!-- Lavage -->
-            <div id="mo-step-2" class="hidden bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                <div class="flex justify-between items-center mb-6">
-                     <h3 class="font-bold text-lg">Rituel de Lavage</h3>
-                     <button onclick="showMoStep(0)" class="text-gray-400 bg-gray-50 p-1 rounded-full px-3 font-bold">X</button>
-                </div>
-                <div class="bg-blue-50 p-6 rounded-2xl text-center mb-6 min-h-[160px] flex flex-col items-center justify-center relative">
-                    <div class="absolute top-2 right-2 text-xs font-bold text-blue-300" id="wash-count">1/8</div>
-                    <p class="text-blue-900 font-medium text-lg leading-relaxed" id="wash-text">Se rincer la bouche (Madmadah) et recracher dans le bol.</p>
-                </div>
-                <div class="flex gap-3">
-                    <button onclick="prevWash()" class="flex-1 py-3 rounded-xl bg-gray-100 text-gray-600">Précédent</button>
-                    <button onclick="nextWash()" class="flex-1 py-3 rounded-xl bg-blue-600 text-white font-medium shadow-lg shadow-blue-200">Suivant</button>
-                </div>
+                <h2 class="text-xl font-bold text-gray-800">Le Mauvais Œil (Al-Ayn)</h2>
+                <p class="text-gray-500 text-sm">Contenu en cours de construction...</p>
             </div>
         </div>
-
-        <!-- ONGLET 4: FLASHCARDS -->
-        <div id="tab-flashcards" class="hidden fade-in h-[400px] flex flex-col">
-            <div class="flex justify-between items-center mb-4 px-2">
-                <h2 class="font-bold text-gray-800">Révision Express</h2>
-                <span class="bg-gray-200 text-gray-600 text-xs px-2 py-1 rounded-full font-bold" id="fc-count">1 / 4</span>
+        <div id="tab-flashcards" class="hidden fade-in">
+             <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center">
+                <h2 class="text-xl font-bold text-gray-800">Quiz</h2>
+                <p class="text-gray-500 text-sm">Contenu en cours de construction...</p>
             </div>
-
-            <div class="flex-1 relative perspective-1000 cursor-pointer group" onclick="flipCard()">
-                <div id="flashcard-inner" class="w-full h-full transition-transform duration-500 transform-style-3d relative rounded-3xl shadow-xl">
-                    <!-- FRONT -->
-                    <div class="absolute inset-0 bg-white rounded-3xl p-8 flex flex-col items-center justify-center text-center backface-hidden border-2 border-gray-100">
-                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full mb-6">QUESTION</span>
-                        <p class="text-xl font-medium text-gray-800 leading-relaxed" id="fc-q">Qu'est-ce que la 'Awrah ?</p>
-                        <p class="text-gray-400 text-xs mt-8 animate-pulse">Toucher pour voir la réponse</p>
-                    </div>
-                    <!-- BACK -->
-                    <div class="absolute inset-0 bg-emerald-600 rounded-3xl p-8 flex flex-col items-center justify-center text-center backface-hidden rotate-y-180">
-                        <span class="bg-emerald-800 text-emerald-100 text-xs font-bold px-3 py-1 rounded-full mb-6">RÉPONSE</span>
-                        <p class="text-xl font-medium text-white leading-relaxed" id="fc-a">Les parties du corps qu'Allah a interdit de dévoiler aux autres.</p>
-                    </div>
-                </div>
-            </div>
-
-            <button onclick="nextCard()" class="mt-6 w-full py-4 bg-gray-900 text-white rounded-2xl font-medium flex items-center justify-center gap-2 hover:bg-black transition-colors">
-                Question Suivante
-            </button>
         </div>
 
     </main>
 
-    <!-- CHATBOT -->
-    <div class="fixed bottom-24 right-4 z-50">
-        <button id="chat-toggle" onclick="toggleChat()" class="bg-emerald-600 hover:bg-emerald-700 text-white p-4 rounded-full shadow-lg transition-transform hover:scale-105 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-        </button>
-    </div>
-
-    <div id="chat-window" class="hidden fixed bottom-24 right-4 w-80 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-50 slide-up flex flex-col h-[400px]">
-        <div class="bg-emerald-600 p-4 flex justify-between items-center text-white">
-            <span class="font-bold text-sm flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
-                Assistant Fiche 8
-            </span>
-            <button onclick="toggleChat()" class="hover:bg-white/20 p-1 rounded">X</button>
-        </div>
-        <div id="chat-messages" class="flex-1 bg-gray-50 p-4 overflow-y-auto space-y-3">
-            <div class="flex justify-start">
-                <div class="max-w-[85%] p-3 rounded-2xl text-sm bg-white text-gray-700 shadow-sm rounded-tl-none">
-                    Assalamu alaykum. Je suis votre assistant. Une question ?
-                </div>
-            </div>
-        </div>
-        <form onsubmit="sendMessage(event)" class="p-3 bg-white border-t border-gray-100 flex gap-2">
-            <input id="chat-input" type="text" placeholder="Votre question..." class="flex-1 bg-gray-100 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
-            <button type="submit" class="bg-emerald-600 text-white p-2 rounded-full hover:bg-emerald-700">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-            </button>
-        </form>
-    </div>
-
     <!-- NAVIGATION BAS -->
-    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-6 py-2 flex justify-between items-center z-40 pb-safe max-w-md mx-auto">
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-6 py-2 flex justify-between items-center z-40 pb-safe max-w-md mx-auto shadow-[0_-5px_10px_rgba(0,0,0,0.02)]">
         <button onclick="switchTab('definitions')" id="nav-definitions" class="nav-btn flex flex-col items-center gap-1 p-2 text-emerald-700 -translate-y-1 transition-all">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-            <span class="text-[10px] font-medium">Définitions</span>
+            <span class="text-[10px] font-bold">Définitions</span>
         </button>
         <button onclick="switchTab('simulateur')" id="nav-simulateur" class="nav-btn flex flex-col items-center gap-1 p-2 text-gray-400 hover:text-gray-600 transition-all">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -349,175 +269,196 @@
     <script>
         // --- NAVIGATION TABS ---
         function switchTab(tabId) {
-            // Cacher tous les onglets
             document.querySelectorAll('#main-content > div').forEach(el => el.classList.add('hidden'));
-            // Afficher le bon
             document.getElementById('tab-' + tabId).classList.remove('hidden');
             
-            // Reset boutons nav
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 btn.classList.remove('text-emerald-700', '-translate-y-1');
                 btn.classList.add('text-gray-400');
+                btn.querySelector('span').classList.remove('font-bold'); // Reset bold
+                btn.querySelector('span').classList.add('font-medium');
             });
-            // Activer le bon bouton
+            
             const activeBtn = document.getElementById('nav-' + tabId);
             activeBtn.classList.remove('text-gray-400');
             activeBtn.classList.add('text-emerald-700', '-translate-y-1');
+            activeBtn.querySelector('span').classList.remove('font-medium');
+            activeBtn.querySelector('span').classList.add('font-bold');
+
+            // Reset simulateur si on quitte l'onglet (optionnel)
+            if(tabId === 'simulateur') updateMannequin();
         }
 
-        // --- SIMULATEUR ---
-        let simConfig = { subject: 'homme', target: 'homme', relation: 'ajnabi' };
+        // --- SIMULATEUR LOGIC ---
+        let currentSubject = 'homme';
+        let currentRelation = 'ajnabi';
         
-        function updateSim(key, val) {
-            simConfig[key] = val;
+        function setSubject(subj) {
+            currentSubject = subj;
             
-            // UI Boutons
-            document.querySelectorAll(`#btn-${key.substring(0,3)}-homme, #btn-${key.substring(0,3)}-femme, #btn-${key.substring(0,3)}-ajnabi, #btn-${key.substring(0,3)}-mahram`).forEach(btn => {
-                btn.classList.remove('bg-emerald-600', 'text-white', 'border-emerald-600');
-                btn.classList.add('bg-white', 'text-gray-500', 'border-gray-200');
+            // UI Update Subject Buttons
+            document.getElementById('btn-sub-homme').className = subj === 'homme' 
+                ? "relative group p-4 rounded-xl border-2 transition-all duration-200 bg-emerald-50 border-emerald-500 text-emerald-800 shadow-sm"
+                : "relative group p-4 rounded-xl border-2 transition-all duration-200 bg-white border-gray-100 text-gray-500 hover:border-gray-200";
+            
+            document.getElementById('btn-sub-femme').className = subj === 'femme'
+                ? "relative group p-4 rounded-xl border-2 transition-all duration-200 bg-emerald-50 border-emerald-500 text-emerald-800 shadow-sm"
+                : "relative group p-4 rounded-xl border-2 transition-all duration-200 bg-white border-gray-100 text-gray-500 hover:border-gray-200";
+
+            document.querySelector('#btn-sub-homme div').nextElementSibling.nextElementSibling.className = subj === 'homme' ? "absolute top-2 right-2 w-3 h-3 bg-emerald-500 rounded-full" : "absolute top-2 right-2 w-3 h-3 bg-gray-200 rounded-full";
+            document.getElementById('dot-femme').className = subj === 'femme' ? "absolute top-2 right-2 w-3 h-3 bg-emerald-500 rounded-full" : "absolute top-2 right-2 w-3 h-3 bg-gray-200 rounded-full";
+
+            // Show/Hide Option Femme & Veil Legend
+            const optFemme = document.getElementById('option-femme');
+            const legendeVoile = document.getElementById('legend-voile');
+            
+            if(subj === 'femme') {
+                optFemme.classList.remove('hidden');
+                legendeVoile.classList.remove('hidden');
+            } else {
+                optFemme.classList.add('hidden');
+                legendeVoile.classList.add('hidden');
+                document.getElementById('check-visage').checked = false; // Reset checkbox
+            }
+
+            updateMannequin();
+        }
+
+        function setRelation(rel) {
+            currentRelation = rel;
+            
+            // UI Update Relation Buttons
+            const ids = ['ajnabi', 'mahram', 'epoux'];
+            ids.forEach(id => {
+                const btn = document.getElementById('btn-rel-' + id);
+                const dot = btn.querySelector('div'); // Le petit rond à droite
+                
+                if(id === rel) {
+                    btn.className = "w-full text-left p-4 rounded-xl border-2 transition-all bg-emerald-600 border-emerald-600 text-white shadow-md flex justify-between items-center";
+                    dot.className = "w-4 h-4 bg-white rounded-full border-4 border-emerald-600";
+                } else {
+                    btn.className = "w-full text-left p-4 rounded-xl border-2 transition-all bg-white border-gray-100 text-gray-500 hover:bg-gray-50 flex justify-between items-center";
+                    dot.className = "w-4 h-4 bg-gray-200 rounded-full";
+                }
             });
-            const activeBtn = document.getElementById(`btn-${key.substring(0,3)}-${val}`);
-            activeBtn.classList.remove('bg-white', 'text-gray-500', 'border-gray-200');
-            activeBtn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-600');
 
-            // Logique
+            updateMannequin();
+        }
+
+        function updateMannequin() {
+            // COLORS
+            const GREEN = "#34d399";
+            const RED = "#f87171"; // Rouge Orangé (Awrah)
+            
+            // PARTS
+            const parts = {
+                head: document.getElementById('man-head'),
+                neck: document.getElementById('man-neck'),
+                arms: [document.getElementById('man-arm-l'), document.getElementById('man-arm-r')],
+                hands: [document.getElementById('man-hand-l'), document.getElementById('man-hand-r')],
+                torso: document.getElementById('man-torso'),
+                awrahZone: document.getElementById('man-awrah-zone'), 
+                legs: [document.getElementById('man-leg-l'), document.getElementById('man-leg-r')],
+                feet: [document.getElementById('man-foot-l'), document.getElementById('man-foot-r')],
+                veil: [document.getElementById('man-veil'), document.getElementById('man-veil-shoulders')]
+            };
+
+            // Reset Veil visibility
+            if(currentSubject === 'femme') {
+                parts.veil.forEach(el => el.classList.remove('opacity-0'));
+            } else {
+                parts.veil.forEach(el => el.classList.add('opacity-0'));
+            }
+
             let text = "";
-            let isDanger = false;
-            
-            if (simConfig.subject === 'homme') {
-                if (simConfig.target === 'homme') {
-                    text = "Entre hommes : La 'Awrah est située entre le nombril et les genoux.";
+            let source = "";
+
+            // LOGIC ENGINE
+            // 1. HOMME (Subject)
+            if (currentSubject === 'homme') {
+                if (currentRelation === 'epoux') {
+                    // Tout Vert
+                    fillAll(parts, GREEN);
+                    text = "Entre époux, il n'y a pas de 'awrah (limite). Tout est autorisé.";
+                    source = "Consensus";
+                } else if (currentRelation === 'mahram') { 
+                    // Fiche 8: Homme face à Mahram -> Nombril-Genou
+                    fillAll(parts, GREEN);
+                    parts.awrahZone.setAttribute('fill', RED);
+                    text = "« Ce qu'il y a entre le nombril et les genoux. »";
+                    source = "Hadith de Jarhad";
+                } else { 
+                    // AJNABI (Femme Étrangère)
+                    // Fiche 8: "Tout sauf la tête et les extrémités"
+                    fillAll(parts, RED);
+                    parts.head.setAttribute('fill', GREEN);
+                    // Coup en vert ou rouge? Texte dit "sauf la tête". On garde tête verte.
+                    parts.hands.forEach(el => el.setAttribute('fill', GREEN));
+                    parts.feet.forEach(el => el.setAttribute('fill', GREEN));
+                    text = "« Tout sauf la tête et les extrémités des membres. »";
+                    source = "Al-Akhdari";
+                }
+            } 
+            // 2. FEMME (Subject)
+            else {
+                const faceHidden = document.getElementById('check-visage').checked;
+                
+                if (currentRelation === 'epoux') {
+                    fillAll(parts, GREEN);
+                    text = "Entre époux, il n'y a pas de 'awrah (limite). Tout est autorisé.";
+                    source = "Consensus";
+                } else if (currentRelation === 'mahram') {
+                    // Femme face à Homme Mahram
+                    // Fiche 8: "Tout sauf la tête et les extrémités"
+                    fillAll(parts, RED);
+                    parts.head.setAttribute('fill', GREEN);
+                    parts.hands.forEach(el => el.setAttribute('fill', GREEN));
+                    parts.feet.forEach(el => el.setAttribute('fill', GREEN));
+                    text = "« Tout sauf la tête et les extrémités des membres. »";
+                    source = "Khalil - Al-Mukhtasar";
                 } else {
-                    if (simConfig.relation === 'mahram') {
-                        text = "Face à une Mahram : La 'Awrah est du nombril aux genoux (pour l'homme).";
+                    // AJNABI (Homme Étranger)
+                    // Fiche 8: "Tout sauf le visage et les mains"
+                    fillAll(parts, RED); // Tout rouge par défaut
+                    
+                    // Mains vertes
+                    parts.hands.forEach(el => el.setAttribute('fill', GREEN));
+
+                    // Visage
+                    if(faceHidden) {
+                        parts.head.setAttribute('fill', RED); // Visage devient Awrah (Rouge)
+                        text = "Le corps entier est 'awrah (y compris le visage).";
+                        source = "Avis plus strict / Précaution";
                     } else {
-                        text = "Face à une étrangère (Ajnabiyyah) : Tout le corps est 'Awrah sauf tête et extrémités.";
-                        isDanger = true;
+                        parts.head.setAttribute('fill', GREEN); // Visage autorisé
+                        text = "« Tout sauf le visage et les mains. »";
+                        source = "Verset 31 Sourate An-Nur / Khalil";
                     }
                 }
-            } else { // Femme
-                if (simConfig.target === 'femme') {
-                    text = "Entre femmes : La 'Awrah est située entre le nombril et les genoux.";
-                } else {
-                    if (simConfig.relation === 'mahram') {
-                        text = "Face à un Mahram : Tout le corps est 'Awrah sauf visage, tête, cou, mains et pieds.";
-                    } else {
-                        text = "Face à un étranger (Ajnabi) : TOUT le corps est 'Awrah sauf visage et mains.";
-                        isDanger = true;
-                    }
-                }
             }
 
-            // Affichage Résultat
-            const box = document.getElementById('sim-result-box');
-            const txt = document.getElementById('sim-text');
-            txt.innerText = text;
-            if(isDanger) {
-                box.className = "p-5 rounded-2xl border bg-red-50 text-red-800 border-red-200 shadow-sm flex items-start gap-3";
-            } else {
-                box.className = "p-5 rounded-2xl border bg-emerald-50 text-emerald-800 border-emerald-200 shadow-sm flex items-start gap-3";
-            }
+            // Update Text
+            document.getElementById('result-text').innerText = text;
+            document.getElementById('result-source').innerText = "Source : " + source;
         }
 
-        // --- MAUVAIS OEIL ---
-        function showMoStep(step) {
-            document.getElementById('mo-step-0').classList.add('hidden');
-            document.getElementById('mo-step-1').classList.add('hidden');
-            document.getElementById('mo-step-2').classList.add('hidden');
-            document.getElementById('mo-step-' + step).classList.remove('hidden');
+        function fillAll(parts, color) {
+            parts.head.setAttribute('fill', color);
+            parts.neck.setAttribute('fill', color);
+            parts.arms.forEach(el => el.setAttribute('fill', color));
+            parts.hands.forEach(el => el.setAttribute('fill', color));
+            parts.torso.setAttribute('fill', color);
+            parts.awrahZone.setAttribute('fill', color);
+            parts.legs.forEach(el => el.setAttribute('fill', color));
+            parts.feet.forEach(el => el.setAttribute('fill', color));
         }
 
-        const washes = [
-            "Se rincer la bouche (Madmadah) et recracher dans le bol.",
-            "Laver le visage au-dessus du bol.",
-            "Laver la main droite, puis la gauche.",
-            "Laver le coude droit, puis le gauche.",
-            "Laver le genou droit, puis le gauche.",
-            "Laver les extrémités des pieds.",
-            "Laver l'intérieur du vêtement (Izar).",
-            "Verser toute l'eau sur la tête du malade par derrière."
-        ];
-        let washIdx = 0;
-        
-        function nextWash() {
-            washIdx = (washIdx + 1) % washes.length;
-            updateWashUI();
-        }
-        function prevWash() {
-            if(washIdx > 0) washIdx--;
-            updateWashUI();
-        }
-        function updateWashUI() {
-            document.getElementById('wash-text').innerText = washes[washIdx];
-            document.getElementById('wash-count').innerText = (washIdx + 1) + "/" + washes.length;
-        }
+        // Init Default
+        window.onload = function() {
+            setSubject('homme');
+            setRelation('ajnabi');
+        };
 
-        // --- FLASHCARDS ---
-        const cards = [
-            { q: "Qu'est-ce que la 'Awrah ?", a: "Les parties du corps qu'Allah a interdit de dévoiler aux autres." },
-            { q: "Awrah de l'homme face à un homme ?", a: "Entre le nombril et les genoux." },
-            { q: "Mon cousin est-il Mahram ?", a: "NON. C'est un Ajnabi (étranger) car le mariage est possible." },
-            { q: "Quel est le remède si on connaît l'auteur du mauvais œil ?", a: "Il doit faire les ablutions spécifiques et on verse l'eau sur le malade." }
-        ];
-        let cardIdx = 0;
-        let isFlipped = false;
-
-        function flipCard() {
-            const inner = document.getElementById('flashcard-inner');
-            if(isFlipped) {
-                inner.classList.remove('rotate-y-180');
-            } else {
-                inner.classList.add('rotate-y-180');
-            }
-            isFlipped = !isFlipped;
-        }
-
-        function nextCard() {
-            // Reset flip
-            const inner = document.getElementById('flashcard-inner');
-            inner.classList.remove('rotate-y-180');
-            isFlipped = false;
-            
-            // Change text after animation
-            setTimeout(() => {
-                cardIdx = (cardIdx + 1) % cards.length;
-                document.getElementById('fc-q').innerText = cards[cardIdx].q;
-                document.getElementById('fc-a').innerText = cards[cardIdx].a;
-                document.getElementById('fc-count').innerText = (cardIdx + 1) + " / " + cards.length;
-            }, 300);
-        }
-
-        // --- CHATBOT ---
-        function toggleChat() {
-            const win = document.getElementById('chat-window');
-            const btn = document.getElementById('chat-toggle');
-            if(win.classList.contains('hidden')) {
-                win.classList.remove('hidden');
-                btn.classList.add('hidden');
-            } else {
-                win.classList.add('hidden');
-                btn.classList.remove('hidden');
-            }
-        }
-
-        function sendMessage(e) {
-            e.preventDefault();
-            const input = document.getElementById('chat-input');
-            const txt = input.value.trim();
-            if(!txt) return;
-
-            // User msg
-            const box = document.getElementById('chat-messages');
-            box.innerHTML += `<div class="flex justify-end"><div class="max-w-[85%] p-3 rounded-2xl text-sm bg-emerald-600 text-white rounded-tr-none">${txt}</div></div>`;
-            input.value = "";
-            box.scrollTop = box.scrollHeight;
-
-            // Bot reply
-            setTimeout(() => {
-                box.innerHTML += `<div class="flex justify-start"><div class="max-w-[85%] p-3 rounded-2xl text-sm bg-white text-gray-700 shadow-sm rounded-tl-none">C'est noté. Référez-vous à la section Définitions pour plus de détails.</div></div>`;
-                box.scrollTop = box.scrollHeight;
-            }, 1000);
-        }
     </script>
 </body>
 </html>
