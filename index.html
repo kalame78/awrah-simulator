@@ -94,7 +94,7 @@
                 </div>
             </div>
 
-            <!-- Carte Preuves (Vert Foncé) - RESTAURÉE -->
+            <!-- Carte Preuves (Vert Foncé) -->
             <div class="bg-emerald-900 rounded-2xl p-6 shadow-md text-white">
                 <div class="flex items-center gap-2 mb-6">
                     <svg class="text-emerald-300" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
@@ -129,7 +129,7 @@
                 </div>
             </div>
 
-            <!-- Carte Mahram/Ajnabi - RESTAURÉE -->
+            <!-- Carte Mahram/Ajnabi -->
             <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
                 <h2 class="text-lg font-bold text-gray-800 mb-4">Les Catégories de Personnes</h2>
                 <div class="space-y-4">
@@ -294,19 +294,76 @@
 
         </div>
 
-        <!-- ONGLETS 3 & 4 -->
+        <!-- ONGLET 3: MAUVAIS OEIL (COMPLET) -->
         <div id="tab-mauvais-oeil" class="hidden fade-in space-y-4">
-             <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center space-y-6">
+            <!-- Accueil Mauvais Oeil -->
+            <div id="mo-step-0" class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center space-y-6">
                 <div class="w-20 h-20 bg-indigo-50 rounded-full flex items-center justify-center mx-auto text-4xl">🧿</div>
-                <h2 class="text-xl font-bold text-gray-800">Le Mauvais Œil (Al-Ayn)</h2>
-                <p class="text-gray-500 text-sm">Contenu en cours de construction...</p>
+                <div>
+                    <h2 class="text-xl font-bold text-gray-800">Le Mauvais Œil (Al-Ayn)</h2>
+                    <p class="text-gray-500 text-sm mt-2">Un regard admiratif qui peut nuire s'il n'est pas béni.</p>
+                </div>
+                <div class="grid gap-3">
+                    <button onclick="showMoStep(1)" class="w-full bg-emerald-600 text-white py-3 rounded-xl font-medium shadow-lg shadow-emerald-200">Comment se protéger ?</button>
+                    <button onclick="showMoStep(2)" class="w-full bg-white border border-gray-200 text-gray-700 py-3 rounded-xl font-medium">Le Remède (Lavage)</button>
+                </div>
+            </div>
+
+            <!-- Protection -->
+            <div id="mo-step-1" class="hidden bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center relative">
+                <button onclick="showMoStep(0)" class="absolute top-4 left-4 text-gray-400 font-bold text-xl">&larr;</button>
+                <h3 class="font-bold text-lg mb-4">La Règle d'Or</h3>
+                <p class="text-gray-600 mb-6">Dès que quelque chose te plaît chez autrui, tu DOIS invoquer la bénédiction.</p>
+                <div class="bg-yellow-50 border border-yellow-200 p-4 rounded-xl mb-6">
+                    <p class="font-amiri text-2xl text-yellow-800 mb-2">اللَّهُمَّ بَارِكْ فِيهِ</p>
+                    <p class="font-bold text-yellow-900">"Allahumma Barik Fih"</p>
+                    <p class="text-xs text-yellow-700 mt-1">(Ô Allah, bénis-le)</p>
+                </div>
+            </div>
+
+            <!-- Lavage -->
+            <div id="mo-step-2" class="hidden bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <div class="flex justify-between items-center mb-6">
+                     <h3 class="font-bold text-lg">Rituel de Lavage</h3>
+                     <button onclick="showMoStep(0)" class="text-gray-400 bg-gray-50 p-1 rounded-full px-3 font-bold">X</button>
+                </div>
+                <div class="bg-blue-50 p-6 rounded-2xl text-center mb-6 min-h-[160px] flex flex-col items-center justify-center relative">
+                    <div class="absolute top-2 right-2 text-xs font-bold text-blue-300" id="wash-count">1/8</div>
+                    <p class="text-blue-900 font-medium text-lg leading-relaxed" id="wash-text">Se rincer la bouche (Madmadah) et recracher dans le bol.</p>
+                </div>
+                <div class="flex gap-3">
+                    <button onclick="prevWash()" class="flex-1 py-3 rounded-xl bg-gray-100 text-gray-600">Précédent</button>
+                    <button onclick="nextWash()" class="flex-1 py-3 rounded-xl bg-blue-600 text-white font-medium shadow-lg shadow-blue-200">Suivant</button>
+                </div>
             </div>
         </div>
-        <div id="tab-flashcards" class="hidden fade-in">
-             <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center">
-                <h2 class="text-xl font-bold text-gray-800">Quiz</h2>
-                <p class="text-gray-500 text-sm">Contenu en cours de construction...</p>
+
+        <!-- ONGLET 4: FLASHCARDS (COMPLET) -->
+        <div id="tab-flashcards" class="hidden fade-in h-[400px] flex flex-col">
+            <div class="flex justify-between items-center mb-4 px-2">
+                <h2 class="font-bold text-gray-800">Révision Express</h2>
+                <span class="bg-gray-200 text-gray-600 text-xs px-2 py-1 rounded-full font-bold" id="fc-count">1 / 4</span>
             </div>
+
+            <div class="flex-1 relative perspective-1000 cursor-pointer group" onclick="flipCard()">
+                <div id="flashcard-inner" class="w-full h-full transition-transform duration-500 transform-style-3d relative rounded-3xl shadow-xl">
+                    <!-- FRONT -->
+                    <div class="absolute inset-0 bg-white rounded-3xl p-8 flex flex-col items-center justify-center text-center backface-hidden border-2 border-gray-100">
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full mb-6">QUESTION</span>
+                        <p class="text-xl font-medium text-gray-800 leading-relaxed" id="fc-q">Qu'est-ce que la 'Awrah ?</p>
+                        <p class="text-gray-400 text-xs mt-8 animate-pulse">Toucher pour voir la réponse</p>
+                    </div>
+                    <!-- BACK -->
+                    <div class="absolute inset-0 bg-emerald-600 rounded-3xl p-8 flex flex-col items-center justify-center text-center backface-hidden rotate-y-180">
+                        <span class="bg-emerald-800 text-emerald-100 text-xs font-bold px-3 py-1 rounded-full mb-6">RÉPONSE</span>
+                        <p class="text-xl font-medium text-white leading-relaxed" id="fc-a">Les parties du corps qu'Allah a interdit de dévoiler aux autres.</p>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="nextCard()" class="mt-6 w-full py-4 bg-gray-900 text-white rounded-2xl font-medium flex items-center justify-center gap-2 hover:bg-black transition-colors">
+                Question Suivante
+            </button>
         </div>
 
     </main>
@@ -522,6 +579,72 @@
             parts.awrahZone.setAttribute('fill', color);
             parts.legs.forEach(el => el.setAttribute('fill', color));
             parts.feet.forEach(el => el.setAttribute('fill', color));
+        }
+
+        // --- MAUVAIS OEIL ---
+        function showMoStep(step) {
+            document.getElementById('mo-step-0').classList.add('hidden');
+            document.getElementById('mo-step-1').classList.add('hidden');
+            document.getElementById('mo-step-2').classList.add('hidden');
+            document.getElementById('mo-step-' + step).classList.remove('hidden');
+        }
+
+        const washes = [
+            "Se rincer la bouche (Madmadah) et recracher dans le bol.",
+            "Laver le visage au-dessus du bol.",
+            "Laver la main droite, puis la gauche.",
+            "Laver le coude droit, puis le gauche.",
+            "Laver le genou droit, puis le gauche.",
+            "Laver les extrémités des pieds.",
+            "Laver l'intérieur du vêtement (Izar).",
+            "Verser toute l'eau sur la tête du malade par derrière."
+        ];
+        let washIdx = 0;
+        
+        function nextWash() {
+            washIdx = (washIdx + 1) % washes.length;
+            updateWashUI();
+        }
+        function prevWash() {
+            if(washIdx > 0) washIdx--;
+            updateWashUI();
+        }
+        function updateWashUI() {
+            document.getElementById('wash-text').innerText = washes[washIdx];
+            document.getElementById('wash-count').innerText = (washIdx + 1) + "/" + washes.length;
+        }
+
+        // --- FLASHCARDS ---
+        const cards = [
+            { q: "Qu'est-ce que la 'Awrah ?", a: "Les parties du corps qu'Allah a interdit de dévoiler aux autres." },
+            { q: "Awrah de l'homme face à un homme ?", a: "Entre le nombril et les genoux." },
+            { q: "Mon cousin est-il Mahram ?", a: "NON. C'est un Ajnabi (étranger) car le mariage est possible." },
+            { q: "Quel est le remède si on connaît l'auteur du mauvais œil ?", a: "Il doit faire les ablutions spécifiques et on verse l'eau sur le malade." }
+        ];
+        let cardIdx = 0;
+        let isFlipped = false;
+
+        function flipCard() {
+            const inner = document.getElementById('flashcard-inner');
+            if(isFlipped) {
+                inner.classList.remove('rotate-y-180');
+            } else {
+                inner.classList.add('rotate-y-180');
+            }
+            isFlipped = !isFlipped;
+        }
+
+        function nextCard() {
+            const inner = document.getElementById('flashcard-inner');
+            inner.classList.remove('rotate-y-180');
+            isFlipped = false;
+            
+            setTimeout(() => {
+                cardIdx = (cardIdx + 1) % cards.length;
+                document.getElementById('fc-q').innerText = cards[cardIdx].q;
+                document.getElementById('fc-a').innerText = cards[cardIdx].a;
+                document.getElementById('fc-count').innerText = (cardIdx + 1) + " / " + cards.length;
+            }, 300);
         }
 
         // Init Default
