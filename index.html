@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Apprentissage Fiqh - Les Yeux</title>
+    <style>
+        :root {
+            --primary: #4A7C59; /* Vert Islamique doux */
+            --secondary: #FAF3E0; /* Beige Crème */
+            --accent: #D9534F; /* Rouge pour l'interdit */
+            --text: #333;
+            --white: #fff;
+            --nav-height: 70px;
+        }
+
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; -webkit-tap-highlight-color: transparent; }
+        
+        body { margin: 0; background-color: var(--secondary); color: var(--text); padding-bottom: var(--nav-height); height: 100vh; display: flex; flex-direction: column; }
+
+        /* HEADER */
+        header { background: var(--primary); color: white; padding: 15px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        header h1 { margin: 0; font-size: 1.2rem; }
+
+        /* MAIN CONTENT AREA */
+        main { flex: 1; overflow-y: auto; padding: 20px; position: relative; }
+        
+        .tab-content { display: none; animation: fadeIn 0.3s ease; }
+        .tab-content.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* NAVIGATION BAR */
+        nav { position: fixed; bottom: 0; width: 100%; background: white; border-top: 1px solid #ddd; display: flex; justify-content: space-around; height: var(--nav-height); z-index: 1000; }
+        
+        .nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #888; font-size: 0.75rem; background: none; border: none; cursor: pointer; transition: 0.2s; }
+        .nav-item.active { color: var(--primary); font-weight: bold; }
+        .nav-item span { font-size: 1.4rem; margin-bottom: 2px; }
+
+        /* UI ELEMENTS */
+        .card { background: white; border-radius: 12px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .btn { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 25px; font-size: 1rem; cursor: pointer; width: 100%; margin-top: 10px; }
+        .btn-outline { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
+        .btn-choice { margin: 5px 0; text-align: left; }
+        .btn-choice.selected { background: var(--primary); color: white; }
+
+        /* ONGLET 1: DEFINITIONS (ACCORDION) */
+        .accordion { margin-bottom: 10px; }
+        .accordion-header { background: #eee; padding: 15px; border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; }
+        .accordion-body { padding: 15px; display: none; background: white; border: 1px solid #eee; border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; }
+        .accordion-body.show { display: block; }
+        .arabic { font-family: 'Amiri', serif; font-size: 1.2rem; color: var(--primary); text-align: right; display: block; margin: 10px 0; }
+
+        /* ONGLET 2: SIMULATEUR */
+        .sim-controls { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+        .label-group { font-weight: bold; margin-bottom: 5px; display: block; color: var(--primary); }
+        .button-group { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px; }
+        .button-group button { flex: 1; white-space: nowrap; padding: 8px 15px; border: 1px solid #ccc; background: white; border-radius: 20px; }
+        .button-group button.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+        .silhouette-container { position: relative; height: 350px; width: 200px; margin: 0 auto; background: #e0e0e0; border-radius: 100px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .body-part { position: absolute; width: 100%; transition: background 0.3s; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: white; font-weight: bold; text-shadow: 0 0 3px black; }
+        
+        /* Zones simplifiées pour la démo */
+        .head { top: 0; height: 15%; width: 60%; border-radius: 50%; left: 20%; }
+        .torso { top: 15%; height: 35%; width: 80%; left: 10%; border-radius: 20px 20px 0 0; }
+        .navel-knees { top: 50%; height: 25%; width: 80%; left: 10%; } /* Zone critique */
+        .legs { top: 75%; height: 25%; width: 80%; left: 10%; border-radius: 0 0 20px 20px; }
+        .hands { top: 40%; width: 100%; height: 10%; pointer-events: none; } /* Juste pour illustration */
+
+        .status-box { text-align: center; margin-top: 15px; padding: 10px; border-radius: 8px; font-weight: bold; }
+        .status-green { background: #d4edda; color: #155724; }
+        .status-red { background: #f8d7da; color: #721c24; }
+
+        /* ONGLET 3: MAUVAIS OEIL */
+        .step-container { display: none; }
+        .step-container.active { display: block; text-align: center; }
+        .ritual-icon { font-size: 3rem; color: var(--primary); margin: 20px 0; }
+        .checklist-item { display: flex; align-items: center; margin: 10px 0; cursor: pointer; }
+        .checklist-item input { margin-right: 10px; transform: scale(1.5); }
+
+        /* ONGLET 4: FLASHCARDS */
+        .flashcard-container { perspective: 1000px; height: 300px; cursor: pointer; }
+        .flashcard { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .flashcard.flipped { transform: rotateY(180deg); }
+        .front, .back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; border-radius: 15px; }
+        .front { background: white; color: var(--primary); border: 2px solid var(--primary); }
+        .back { background: var(--primary); color: white; transform: rotateY(180deg); }
+        .flashcard-controls { display: flex; justify-content: space-between; margin-top: 20px; }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Fiche 8 : Les Péchés des Yeux</h1>
+</header>
+
+<main>
+    <!-- ONGLET 1: DEFINITIONS -->
+    <div id="tab-def" class="tab-content active">
+        <div class="card">
+            <h3>📖 Les Fondamentaux</h3>
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">Définition : Regarder l'interdit <span>+</span></div>
+                <div class="accordion-body">
+                    C'est regarder avec attention (ta'ammul) les parties du corps qu'Allah a interdit de dévoiler (Awrah). <br><br>
+                    <strong>Attention :</strong> Cela n'est interdit que si on a l'intention de regarder la 'Awrah.
+                </div>
+            </div>
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">Hadith du Prophète (ﷺ) <span>+</span></div>
+                <div class="accordion-body">
+                    <span class="arabic">يَا عَلِيُّ، لا تُتْبِعِ النَّظْرَةَ النَّظْرَةَ</span>
+                    "Ô Ali, ne fais pas suivre le premier regard par le suivant, car tu as droit au premier, mais pas au second." (Sunan Abi Dawud)
+                </div>
+            </div>
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">Mahram vs Ajnabi <span>+</span></div>
+                <div class="accordion-body">
+                    <ul>
+                        <li><strong>Mahram :</strong> Lien de sang, lait ou mariage empêchant le mariage à vie (Père, Frère, Fils, Oncle...).</li>
+                        <li><strong>Ajnabi (Étranger) :</strong> Toute personne avec qui le mariage est potentiellement possible (Cousin(e), voisin(e), inconnu(e)).</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">Le Regard Méprisant <span>+</span></div>
+                <div class="accordion-body">
+                    Regarder une personne pour exprimer haine, mépris ou intimidation (ex: froncer les sourcils pour faire baisser les yeux à l'autre). C'est interdit.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ONGLET 2: SIMULATEUR AWRAH -->
+    <div id="tab-sim" class="tab-content">
+        <div class="card">
+            <h3>🔍 Simulateur de Limites</h3>
+            <p style="font-size:0.9rem; color:#666; margin-bottom:15px;">Configurez la situation pour voir ce qui est autorisé.</p>
+
+            <div class="sim-controls">
+                <span class="label-group">JE SUIS :</span>
+                <div class="button-group" id="btn-subject">
+                    <button class="active" onclick="setSim('subject', 'homme')">Homme</button>
+                    <button onclick="setSim('subject', 'femme')">Femme</button>
+                </div>
+
+                <span class="label-group">JE REGARDE :</span>
+                <div class="button-group" id="btn-target">
+                    <button class="active" onclick="setSim('target', 'homme')">Un Homme</button>
+                    <button onclick="setSim('target', 'femme')">Une Femme</button>
+                </div>
+
+                <span class="label-group">RELATION :</span>
+                <div class="button-group" id="btn-relation">
+                    <button onclick="setSim('relation', 'mahram')">Mahram</button>
+                    <button class="active" onclick="setSim('relation', 'ajnabi')">Ajnabi (Étranger)</button>
+                </div>
+            </div>
+
+            <!-- Visualisation -->
+            <div class="silhouette-container">
+                <div class="body-part head" id="zone-head">Tête</div>
+                <div class="body-part torso" id="zone-torso">Torse</div>
+                <div class="body-part navel-knees" id="zone-navel">Nombril-Genou</div>
+                <div class="body-part legs" id="zone-legs">Jambes</div>
+            </div>
+
+            <div id="sim-result" class="status-box status-green">
+                Résultat affiché ici
+            </div>
+        </div>
+    </div>
+
+    <!-- ONGLET 3: MAUVAIS OEIL -->
+    <div id="tab-ayn" class="tab-content">
+        <div class="card">
+            <h3>🧿 Le Mauvais Œil (Al-Ayn)</h3>
+            
+            <div id="step1" class="step-container active">
+                <h4>Comprendre & Prévenir</h4>
+                <p>Le mauvais œil est un regard admiratif mêlé de jalousie (ou non) qui cause du tort.</p>
+                <div class="ritual-icon">✋</div>
+                <p><strong>La règle d'or :</strong> Dès que tu es impressionné par quelque chose :</p>
+                <button class="btn" onclick="playAudioEffect()">Dire "Allahumma Barik"</button>
+                <p style="font-size:0.8rem; text-align:center; margin-top:10px;">(Cela empêche ton œil de nuire)</p>
+                <hr>
+                <button class="btn btn-outline" onclick="nextStep(2)">Voir le Remède (Lavage)</button>
+            </div>
+
+            <div id="step2" class="step-container">
+                <h4>🚿 Le Rituel de Guérison</h4>
+                <p>Si le responsable est connu, il doit faire les ablutions spécifiques au-dessus d'un récipient.</p>
+                
+                <div style="background:#f0f0f0; padding:15px; border-radius:10px; margin:10px 0;">
+                    <strong id="wash-step-text">1. Se rincer la bouche (Madmadah) et recracher dans le bol.</strong>
+                </div>
+
+                <div class="button-group" style="justify-content: center;">
+                    <button class="btn" onclick="nextWashStep()" style="width:auto">Étape Suivante</button>
+                </div>
+                <button class="btn btn-outline" onclick="nextStep(1)" style="margin-top:20px;">Retour</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ONGLET 4: FLASHCARDS -->
+    <div id="tab-flash" class="tab-content">
+        <div class="flashcard-container" onclick="flipCard()">
+            <div class="flashcard" id="flashcard">
+                <div class="front">
+                    <h4>Question :</h4>
+                    <p id="fc-question" style="font-size:1.2rem;">Appuyez pour commencer</p>
+                    <small>(Touchez pour retourner)</small>
+                </div>
+                <div class="back">
+                    <h4>Réponse :</h4>
+                    <p id="fc-answer">...</p>
+                </div>
+            </div>
+        </div>
+        <div class="flashcard-controls">
+            <button class="btn btn-outline" onclick="prevCard()" style="width:45%">Précédent</button>
+            <button class="btn" onclick="nextCard()" style="width:45%">Suivant</button>
+        </div>
+        <div style="text-align: center; margin-top: 10px; color: #888;">Carte <span id="fc-index">1</span> / <span id="fc-total">5</span></div>
+    </div>
+
+</main>
+
+<nav>
+    <button class="nav-item active" onclick="switchTab('tab-def', this)">
+        <span>📚</span>
+        Définitions
+    </button>
+    <button class="nav-item" onclick="switchTab('tab-sim', this)">
+        <span>👤</span>
+        Simulateur
+    </button>
+    <button class="nav-item" onclick="switchTab('tab-ayn', this)">
+        <span>🧿</span>
+        M. Œil
+    </button>
+    <button class="nav-item" onclick="switchTab('tab-flash', this)">
+        <span>🧠</span>
+        Flashcards
+    </button>
+</nav>
+
+<script>
+    // NAVIGATION
+    function switchTab(tabId, navElement) {
+        // Hide all tabs
+        document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+        // Show selected tab
+        document.getElementById(tabId).classList.add('active');
+        
+        // Update nav styling
+        document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+        navElement.classList.add('active');
+    }
+
+    // ACCORDION
+    function toggleAccordion(element) {
+        const body = element.nextElementSibling;
+        const icon = element.querySelector('span');
+        
+        if (body.classList.contains('show')) {
+            body.classList.remove('show');
+            icon.innerText = '+';
+        } else {
+            body.classList.add('show');
+            icon.innerText = '-';
+        }
+    }
+
+    // SIMULATEUR LOGIC
+    let simState = { subject: 'homme', target: 'homme', relation: 'ajnabi' };
+
+    function setSim(category, value) {
+        simState[category] = value;
+        
+        // Update Buttons UI
+        const container = document.getElementById(category === 'subject' ? 'btn-subject' : category === 'target' ? 'btn-target' : 'btn-relation');
+        Array.from(container.children).forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        calculateAwrah();
+    }
+
+    function calculateAwrah() {
+        const head = document.getElementById('zone-head');
+        const torso = document.getElementById('zone-torso');
+        const navel = document.getElementById('zone-navel');
+        const legs = document.getElementById('zone-legs');
+        const resultText = document.getElementById('sim-result');
+
+        // Reset colors (Green = OK/Hidden properly, Red = Awrah/Forbidden to look)
+        // Note: Logic is tricky. Let's define Red as "Must Cover / Forbidden to look at".
+        let headC = 'green', torsoC = 'green', navelC = 'green', legsC = 'green';
+        let message = "";
+
+        // LOGIC BASED ON FICHE
+        if (simState.subject === 'homme') {
+            if (simState.target === 'homme') {
+                // Homme face à Homme: Awrah = Nombril-Genou
+                headC = '#4A7C59'; torsoC = '#4A7C59'; navelC = '#D9534F'; legsC = '#4A7C59';
+                message = "Awrah : Entre le nombril et les genoux.";
+            } else if (simState.target === 'femme') {
+                if (simState.relation === 'mahram') {
+                     // Homme face à Mahram (Femme): Nombril-Genou
+                    headC = '#4A7C59'; torsoC = '#4A7C59'; navelC = '#D9534F'; legsC = '#4A7C59';
+                    message = "Face à une Mahram : Nombril aux genoux.";
+                } else {
+                    // Homme face à Ajnabiyyah: Fiche says "Tout sauf tête et extrémités"
+                    // Meaning the MAN must cover everything or the WOMAN sees only that? 
+                    // Usually Man Awrah is Navel-Knee. But text says specific rule.
+                    // Let's apply standard interpreting the fiche text: "Awrah de l'homme avec femme ajnabiyyah: tout sauf tête et extrémités".
+                    headC = '#4A7C59'; torsoC = '#D9534F'; navelC = '#D9534F'; legsC = '#D9534F';
+                    message = "Face à une étrangère : Tout le corps est Awrah sauf tête et extrémités.";
+                }
+            }
+        } else { // SUJET FEMME
+            if (simState.target === 'femme') {
+                 // Femme face à Femme: Nombril-Genou
+                headC = '#4A7C59'; torsoC = '#4A7C59'; navelC = '#D9534F'; legsC = '#4A7C59';
+                message = "Entre femmes : Awrah du nombril aux genoux.";
+            } else if (simState.target === 'homme') {
+                if (simState.relation === 'mahram') {
+                    // Femme face à Mahram: Tout sauf Tête et Extrémités
+                    // Meaning Awrah is Torso+Navel-Knees+UpperLegs? 
+                    // No, usually Mahram can see hair/arms. Awrah is "Body except head/extremities".
+                    headC = '#4A7C59'; torsoC = '#D9534F'; navelC = '#D9534F'; legsC = '#4A7C59'; 
+                    message = "Face à un Mahram : Tout sauf tête et extrémités.";
+                } else {
+                    // Femme face à Ajnabi: Tout sauf Visage et Mains
+                    headC = '#D9534F'; torsoC = '#D9534F'; navelC = '#D9534F'; legsC = '#D9534F';
+                    message = "Face à un étranger : TOUT est Awrah sauf visage et mains.";
+                }
+            }
+        }
+
+        // Apply colors
+        head.style.background = headC;
+        torso.style.background = torsoC;
+        navel.style.background = navelC;
+        legs.style.background = legsC;
+        
+        resultText.innerText = message;
+        resultText.className = "status-box " + (message.includes("TOUT") ? "status-red" : "status-green");
+    }
+
+    // Initial calculation
+    calculateAwrah();
+
+    // MAUVAIS OEIL STEPS
+    function nextStep(stepNum) {
+        document.querySelectorAll('.step-container').forEach(el => el.classList.remove('active'));
+        document.getElementById('step' + stepNum).classList.add('active');
+    }
+
+    const washSteps = [
+        "1. Se rincer la bouche (Madmadah) et recracher dans le bol.",
+        "2. Laver le visage.",
+        "3. Laver la main droite puis gauche.",
+        "4. Laver le coude droit puis gauche.",
+        "5. Laver le genou droit puis gauche.",
+        "6. Laver les extrémités des pieds.",
+        "7. Laver l'intérieur du vêtement (Izar).",
+        "8. Verser toute l'eau sur la tête du malade en une fois."
+    ];
+    let currentWashIndex = 0;
+
+    function nextWashStep() {
+        currentWashIndex = (currentWashIndex + 1) % washSteps.length;
+        document.getElementById('wash-step-text').innerText = washSteps[currentWashIndex];
+    }
+
+    function playAudioEffect() {
+        alert("Audio : 'Allahumma Barik fih'");
+    }
+
+    // FLASHCARDS DATA
+    const cards = [
+        { q: "Qu'est-ce que la 'Awrah ?", a: "Les parties du corps qu'Allah a interdit de dévoiler." },
+        { q: "Quelle est la Awrah de l'homme face à un autre homme ?", a: "Ce qu'il y a entre le nombril et les genoux." },
+        { q: "Mon cousin est-il mon Mahram ?", a: "NON. C'est un Ajnabi (étranger) car le mariage est possible." },
+        { q: "Quelle est la cause du mauvais œil ?", a: "L'admiration (avec ou sans jalousie) sans invoquer la bénédiction d'Allah." },
+        { q: "Quelle est la Awrah de la femme face à un homme étranger ?", a: "Tout le corps sauf le visage et les mains." }
+    ];
+    let cardIndex = 0;
+
+    function flipCard() {
+        document.getElementById('flashcard').classList.toggle('flipped');
+    }
+
+    function loadCard() {
+        document.getElementById('flashcard').classList.remove('flipped');
+        setTimeout(() => {
+            document.getElementById('fc-question').innerText = cards[cardIndex].q;
+            document.getElementById('fc-answer').innerText = cards[cardIndex].a;
+            document.getElementById('fc-index').innerText = cardIndex + 1;
+            document.getElementById('fc-total').innerText = cards.length;
+        }, 200);
+    }
+
+    function nextCard() {
+        if (cardIndex < cards.length - 1) {
+            cardIndex++;
+            loadCard();
+        }
+    }
+
+    function prevCard() {
+        if (cardIndex > 0) {
+            cardIndex--;
+            loadCard();
+        }
+    }
+
+    // Init Flashcard
+    loadCard();
+
+</script>
+
+</body>
+</html>
